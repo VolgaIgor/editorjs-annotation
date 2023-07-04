@@ -24,3 +24,17 @@ var editor = EditorJS({
   // ...
 });
 ```
+
+## Output data
+Annotation will be wrapped with a `span` tag. with an `cdx-annotation` class.
+
+Additional data will be store in element's dataset: `data-title`, `data-text`.
+
+```json
+{
+    "type" : "paragraph",
+    "data" : {
+        "text" : "Nuclear power plants have a <span class=\"cdx-annotation\" data-title=\"Carbon footprint\" data-text=\"Indicator to compare the total amount...\">carbon footprint</span>..."
+    }
+}
+```
