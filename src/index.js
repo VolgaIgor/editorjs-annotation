@@ -384,7 +384,9 @@ export default class Annotation {
   static get sanitize() {
     return {
       span: {
-        class: Annotation.CSS.baseClass
+        class: Annotation.CSS.baseClass,
+        "data-title": true,
+        "data-text": true
       }
     };
   }
