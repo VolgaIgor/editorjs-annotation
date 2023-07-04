@@ -1,0 +1,144 @@
+.cdx-annotation {
+  background: rgb(192 192 192 / 30%);
+  padding: 2px 3px;
+  border: 1px solid rgb(201 201 201 / 30%);
+  border-radius: 3px;
+  font-size: .98em;
+}
+
+.cdx-annotation_popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  padding: 10px;
+  transition: opacity .5s;
+}
+
+.cdx-annotation_popup.hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cdx-annotation_popup-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgb(0 0 0 / 50%);
+  cursor: pointer;
+}
+
+.cdx-annotation_popup-form {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  max-height: 100%;
+
+  z-index: 20;
+  background-color: white;
+  border: 1px solid #e8e8eb;
+  border-radius: 6px;
+  box-shadow: 0 3px 15px -3px rgba(13, 20, 33, .13);
+}
+
+.cdx-annotation_popup-header {
+  display: flex;
+  padding: 10px 16px;
+  border-bottom: 1px solid #e8e8eb;
+}
+
+.cdx-annotation_popup-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: auto;
+}
+
+.cdx-annotation_popup-btn-close {
+  margin: -10px -16px;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.cdx-annotation_popup-btn-close svg {
+  width: 26px;
+}
+
+.cdx-annotation_popup-content {
+  padding: 10px 12px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.cdx-annotation_popup-inp-title {
+  margin-bottom: 10px;
+}
+
+.cdx-annotation_popup-inp-text {
+  resize: vertical;
+  max-height: 300px;
+}
+
+.cdx-annotation_popup-footer {
+  display: flex;
+  padding: 10px 16px;
+  border-top: 1px solid #e8e8eb;
+}
+
+.cdx-annotation_popup-footer .cdx-button {
+  padding: 6px 13px;
+  transition: background-color .2s;
+}
+
+.cdx-annotation_popup-btn-remove {
+  color: #e96a6a;
+  border-color: #e96a6a;
+}
+
+.cdx-annotation_popup-btn-remove:hover {
+  background-color: #fff4f4;
+}
+
+.cdx-annotation_popup-btn-save {
+  color: #46a946;
+  border-color: #46a946;
+  margin-left: auto;
+}
+
+.cdx-annotation_popup-btn-save:hover {
+  background-color: #f2fff2;
+}
+
+.cdx-annotation_btn-edit {
+  display: none;
+  align-items: center;
+  justify-content: left;
+  font-size: 13px;
+  gap: 6px;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  padding: 5px 8px;
+  border-top: 1px solid rgba(201, 201, 204, .48);
+  transition: background-color .2s;
+}
+
+.cdx-annotation_btn-edit:hover {
+  background-color: rgb(0 0 0 / 5%);
+}
+
+.cdx-annotation_btn-edit.show {
+  display: flex;
+}
