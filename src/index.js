@@ -292,10 +292,6 @@ export default class Annotation {
     }
 
     if (Annotation.currentRange) {
-      /*let sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(this.currentRange);*/
-
       this.wrap(Annotation.currentRange, title, text);
     } else if (Annotation.currentElem) {
       if (title) {
@@ -365,6 +361,9 @@ export default class Annotation {
     }
   }
 
+  /**
+   * Render "Edit annotation" button
+   */
   renderActions() {
     return this.actionButton;
   }
