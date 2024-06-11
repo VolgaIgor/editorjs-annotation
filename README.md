@@ -8,6 +8,28 @@ Allows to add an extended annotation to any text
 - Editor.js v2.20+
 
 ## Installation
+### Install via NPM
+Get the package
+
+```shell
+$ npm i editorjs-annotation
+```
+
+Include module at your application
+
+```javascript
+import Annotation from 'editorjs-annotation';
+```
+
+### Load from CDN
+
+You can load a specific version of the package from jsDelivr CDN.
+
+Require this script on a page with Editor.js.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/editorjs-annotation"></script>
+```
 
 ### Download to your project's source dir
 1. Upload folder `dist` from repository

@@ -1,6 +1,6 @@
 {
   "name": "editorjs-annotation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "codex editor",
     "annotation",
@@ -10,15 +10,16 @@
   ],
   "description": "Annotation Inline Tool for Editor.js",
   "license": "MIT",
-  "repository": "https://github.com/VolgaIgor/editorjs-annotation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VolgaIgor/editorjs-annotation.git"
+  },
   "main": "./dist/bundle.js",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development --watch"
   },
-  "author": {
-    "name": "Igor Shuvalov «VolgaIgor»"
-  },
+  "author": "Igor Shuvalov «VolgaIgor»",
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
@@ -28,5 +29,9 @@
     "style-loader": "^0.21.0",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/VolgaIgor/editorjs-annotation/issues"
+  },
+  "homepage": "https://github.com/VolgaIgor/editorjs-annotation#readme"
 }
