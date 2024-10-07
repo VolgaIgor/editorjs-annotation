@@ -2,8 +2,8 @@
  * Build styles
  */
 import './index.css';
-import Icon from './svg/icon.svg'
-import Close from './svg/close.svg'
+import ToolboxIcon from './svg/icon.svg'
+import CloseIcon from './svg/close.svg'
 
 /**
  * Annotation Inline Tool for the Editor.js
@@ -25,13 +25,6 @@ export default class Annotation {
     this.api = api;
 
     /**
-     * Toolbar Button
-     *
-     * @type {HTMLElement|null}
-     */
-    this.button = null;
-
-    /**
      * Tag represented the term
      *
      * @type {string}
@@ -45,10 +38,6 @@ export default class Annotation {
       base: this.api.styles.inlineToolButton,
       active: this.api.styles.inlineToolButtonActive
     };
-
-    this.actionButton = document.createElement('button');
-    this.actionButton.classList.add(Annotation.CSS.actionButton);
-    this.actionButton.innerHTML = Icon + this.api.i18n.t('Edit annotation');
   }
 
   static currentRange = null;
@@ -62,9 +51,6 @@ export default class Annotation {
   static get CSS() {
     return {
       baseClass: 'cdx-annotation',
-
-      actionButton: 'cdx-annotation_btn-edit',
-      actionShowButton: 'show',
 
       popupClass: 'cdx-annotation_popup',
       popupHidden: 'hidden',
@@ -95,7 +81,7 @@ export default class Annotation {
       popupOverlay.classList.add(Annotation.CSS.popupOverlay);
       popupOverlay.addEventListener('click', () => {
         this.closePopup();
-      })
+      });
 
       let popupForm = document.createElement('div');
       popupForm.classList.add(Annotation.CSS.popupForm);
@@ -109,7 +95,7 @@ export default class Annotation {
 
       let popupCloseButton = document.createElement('button');
       popupCloseButton.classList.add(Annotation.CSS.popupCloseButton);
-      popupCloseButton.innerHTML = Close;
+      popupCloseButton.innerHTML = CloseIcon;
       popupCloseButton.addEventListener('click', () => {
         this.closePopup();
       })
@@ -214,15 +200,15 @@ export default class Annotation {
   /**
    * Create button element for Toolbar
    *
-   * @return {HTMLElement}
+   * @return MenuConfig
    */
   render() {
-    this.button = document.createElement('button');
-    this.button.type = 'button';
-    this.button.classList.add(this.iconClasses.base);
-    this.button.innerHTML = this.toolboxIcon;
-
-    return this.button;
+    return {
+      icon: ToolboxIcon,
+      isActive: () => {
+        return !!this.api.selection.findParentTag(this.tag, Annotation.CSS.baseClass);
+      }
+    }
   }
 
   /**
@@ -241,7 +227,9 @@ export default class Annotation {
      * If start or end of selection is in the highlighted block
      */
     if (termWrapper) {
-      this.unwrap(termWrapper);
+      Annotation.currentRange = null;
+      Annotation.currentElem = termWrapper;
+      this.openPopup(termWrapper.getAttribute('data-title'), termWrapper.getAttribute('data-text'));
     } else {
       Annotation.currentRange = range.cloneRange();
       Annotation.currentElem = null;
@@ -342,38 +330,6 @@ export default class Annotation {
      */
     sel.removeAllRanges();
     sel.addRange(range);
-  }
-
-  /**
-   * Check and change Term's state for current selection
-   */
-  checkState() {
-    const termTag = this.api.selection.findParentTag(this.tag, Annotation.CSS.baseClass);
-
-    this.button.classList.toggle(this.iconClasses.active, !!termTag);
-    this.actionButton.classList.toggle(Annotation.CSS.actionShowButton, !!termTag);
-    if (termTag) {
-      this.actionButton.onclick = () => {
-        Annotation.currentRange = null;
-        Annotation.currentElem = termTag;
-        this.openPopup(termTag.getAttribute('data-title'), termTag.getAttribute('data-text'));
-      };
-    }
-  }
-
-  /**
-   * Render "Edit annotation" button
-   */
-  renderActions() {
-    return this.actionButton;
-  }
-
-  /**
-   * Get Tool icon's SVG
-   * @return {string}
-   */
-  get toolboxIcon() {
-    return Icon;
   }
 
   /**

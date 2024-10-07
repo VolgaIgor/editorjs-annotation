@@ -5,7 +5,7 @@ Allows to add an extended annotation to any text
 ![Preview image](https://github.com/VolgaIgor/editorjs-annotation/raw/main/asset/screenshot.png)
 
 ### Required
-- Editor.js v2.20+
+- Editor.js v2.30+
 
 ## Installation
 ### Install via NPM
